@@ -1,0 +1,86 @@
+- type: entity
+  name: Urist McHunter
+  save: false
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobHunter
+  abstract: true 
+  components:
+  - type: HumanoidAppearance
+    species: Hunter
+  - type: Hunger
+    starvationDamage:
+      types:
+        Bloodloss: 0.5
+  - type: Thirst
+  - type: Icon
+    sprite: _CM14/Mobs/Species/Hunter/parts.rsi
+    state: full
+  - type: Body
+    prototype: Hunter
+    requiredLegs: 2
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatLizard
+      amount: 5
+  - type: Inventory
+    speciesId: reptilian
+  - type: LizardAccent
+  - type: Speech
+    speechSounds: Lizard
+    speechVerb: Reptilian
+  - type: Vocal
+    sounds:
+      Male: UnisexReptilian
+      Female: UnisexReptilian
+      Unsexed: UnisexReptilian
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Quills
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 10
+  - type: Temperature
+    heatDamageThreshold: 400
+    coldDamageThreshold: 100
+    currentTemperature: 200
+    specificHeat: 42
+    coldDamage:
+      types:
+        Cold : 0.1 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat : 0.1 #per second, scales with temperature & other constants
+  - type: Bloodstream
+    bloodReagent: GreenBlood
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.1
+    damageRecovery:
+      types:
+        Asphyxiation: -10
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.20
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 5
+    weightlessAcceleration: 1.5 # Move around more easily in space.
+    weightlessFriction: 1
+    weightlessModifier: 1
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobHunterDummy
+  noSpawn: true
+  description: A dummy Hunter meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Hunter
